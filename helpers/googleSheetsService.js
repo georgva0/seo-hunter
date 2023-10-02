@@ -1,6 +1,7 @@
 const { google } = require("googleapis");
 const SCOPES = ["https://www.googleapis.com/auth/spreadsheets"];
 const sheets = google.sheets("v4");
+require("dotenv").config();
 
 const getAuthToken = async () => {
   const auth = new google.auth.GoogleAuth({
@@ -28,10 +29,14 @@ const getSpreadSheetValues = async ({ spreadsheetId, auth, sheetName }) => {
   return res;
 };
 
-getAuthToken().then((data) => console.log(data));
+getSpreadSheetValues(
+  "193MgNzp70iMZjLVFR0nZxLkwfw6JdX9GSymGDZ_M-08",
+  auth,
+  "Mundo"
+).then((data) => console.log(data));
 
-// module.exports = {
-//   getAuthToken,
-//   getSpreadSheet,
-//   getSpreadSheetValues,
-// };
+module.exports = {
+  getAuthToken,
+  getSpreadSheet,
+  getSpreadSheetValues,
+};
