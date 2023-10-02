@@ -29,11 +29,11 @@ const getSpreadSheetValues = async ({ spreadsheetId, auth, sheetName }) => {
   return res;
 };
 
-getSpreadSheetValues(
-  "193MgNzp70iMZjLVFR0nZxLkwfw6JdX9GSymGDZ_M-08",
-  auth,
-  "Mundo"
-).then((data) => console.log(data));
+// getSpreadSheetValues(
+//   "193MgNzp70iMZjLVFR0nZxLkwfw6JdX9GSymGDZ_M-08",
+//   auth,
+//   "Mundo"
+// ).then((data) => console.log(data));
 
 module.exports = {
   getAuthToken,

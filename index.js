@@ -1,6 +1,7 @@
 const piano = require("./helpers/piano");
 const ares = require("./helpers/ares");
 const urlFix = require("./helpers/urlFix");
+const google = require("./helpers/googleSheetsService");
 const data = require("./data.json");
 
 const init = async () => {
