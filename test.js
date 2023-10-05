@@ -1,34 +1,11 @@
-const {
-  getAuthToken,
-  getSpreadSheet,
-  getSpreadSheetValues,
-} = require("./helpers/googleSheetsService.js");
+const data = [
+  { prop1: "A1", prop2: 400 },
+  { prop1: "A2", prop2: 800 },
+];
 
-const spreadsheetId = "193MgNzp70iMZjLVFR0nZxLkwfw6JdX9GSymGDZ_M-08";
-const sheetName = "Mundo";
+const dataToSend = data.map((item) => Object.values(item));
 
-async function testGetSpreadSheetValues() {
-  try {
-    const auth = await getAuthToken();
-    const response = await getSpreadSheetValues({
-      spreadsheetId,
-      sheetName,
-      auth,
-    });
-    console.log(
-      "Output for getSpreadSheetValues",
-      JSON.stringify(response.data, null, 2)
-    );
-  } catch (error) {
-    console.log(error.message, error.stack);
-  }
-}
-
-function main() {
-  testGetSpreadSheetValues();
-}
-
-main();
+console.log(dataToSend);
 
 //const data = require('./data.json');
 //const google = require('./google');

@@ -42,7 +42,11 @@ const init = async () => {
       }
     }
 
-    console.log(payload.DataFeed.Rows.slice(0, 6));
+    const dataToUpload = payload.DataFeed.Rows.slice(0, 6).map((item) =>
+      Object.values(item)
+    );
+
+    await google.handleSpreadsheetData(serviceName, dataToUpload);
   }
 };
 

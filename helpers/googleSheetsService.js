@@ -1,42 +1,41 @@
 const { google } = require("googleapis");
 const SCOPES = ["https://www.googleapis.com/auth/spreadsheets"];
-const sheets = google.sheets("v4");
 require("dotenv").config();
 
-const getAuthToken = async () => {
+exports.handleSpreadsheetData = async (service, payload) => {
   const auth = new google.auth.GoogleAuth({
     scopes: SCOPES,
     keyFile: "./credentials/keys.json",
   });
-  const authToken = await auth.getClient();
-  return authToken;
-};
+  const client = await auth.getClient();
 
-const getSpreadSheet = async ({ spreadsheetId, auth }) => {
-  const res = await sheets.spreadsheets.get({
-    spreadsheetId,
+  const googleSheets = google.sheets({ version: "v4", auth: client });
+
+  const spreadsheetId = "193MgNzp70iMZjLVFR0nZxLkwfw6JdX9GSymGDZ_M-08";
+
+  const metaData = await googleSheets.spreadsheets.get({
     auth,
-  });
-  return res;
-};
-
-const getSpreadSheetValues = async ({ spreadsheetId, auth, sheetName }) => {
-  const res = await sheets.spreadsheets.values.get({
     spreadsheetId,
-    auth,
-    range: sheetName,
   });
-  return res;
-};
 
-// getSpreadSheetValues(
-//   "193MgNzp70iMZjLVFR0nZxLkwfw6JdX9GSymGDZ_M-08",
-//   auth,
-//   "Mundo"
-// ).then((data) => console.log(data));
+  const getRows = await googleSheets.spreadsheets.values.get({
+    auth,
+    spreadsheetId,
+    range: service,
+  });
 
-module.exports = {
-  getAuthToken,
-  getSpreadSheet,
-  getSpreadSheetValues,
+  //return getRows.data.values;
+
+  //write rows to spreadsheet
+  googleSheets.spreadsheets.values.update({
+    auth,
+    spreadsheetId,
+    range: `${service}!A4:H9`,
+    valueInputOption: "USER_ENTERED",
+    resource: {
+      values: payload,
+    },
+  });
+
+  console.log(`Spreadsheet updated for ${service}`);
 };
