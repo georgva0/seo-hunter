@@ -1,11 +1,17 @@
-const data = [
-  { prop1: "A1", prop2: 400 },
-  { prop1: "A2", prop2: 800 },
-];
+const piano = require("./helpers/piano");
 
-const dataToSend = data.map((item) => Object.values(item));
+piano.findArticles("Uzbek").then((data) => console.log(data.DataFeed.Rows));
 
-console.log(dataToSend);
+// console.log(serviceFix.serviceFix("Mundo"));
+
+// const data = [
+//   { prop1: "A1", prop2: 400 },
+//   { prop1: "A2", prop2: 800 },
+// ];
+
+// const dataToSend = data.map((item) => Object.values(item));
+
+// console.log(dataToSend);
 
 //const data = require('./data.json');
 //const google = require('./google');

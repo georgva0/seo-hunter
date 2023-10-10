@@ -1,5 +1,45 @@
 {
     "serviceNames": [
-        "Mundo"
+        "Uzbek"
+    ],
+    "serviceNames_final": [
+        "Afaan Oromoo",
+        "Afrique",
+        "Amharic",
+        "Gahuza",
+        "Hausa",
+        "Igbo",
+        "Pidgin",
+        "Somali",
+        "Swahili",
+        "Tigrinya",
+        "Yoruba",
+        "Kyrgyz",
+        "Uzbek",
+        "Burmese",
+        "Indonesian",
+        "Chinese",
+        "Thai",
+        "Vietnamese",
+        "Bengali",
+        "Gujarati",
+        "Hindi",
+        "Marathi",
+        "Nepali",
+        "Pashto",
+        "Punjabi",
+        "Sinhala",
+        "Tamil",
+        "Telugu",
+        "Urdu",
+        "Azeri",
+        "Russian",
+        "Serbian",
+        "Turkish",
+        "Ukrainian",
+        "Brasil",
+        "Mundo",
+        "Arabic",
+        "Persian"
     ]
 }

@@ -30,7 +30,7 @@ exports.handleSpreadsheetData = async (service, payload) => {
   googleSheets.spreadsheets.values.update({
     auth,
     spreadsheetId,
-    range: `${service}!A4:H9`,
+    range: `${service}!A5:H104`,
     valueInputOption: "USER_ENTERED",
     resource: {
       values: payload,

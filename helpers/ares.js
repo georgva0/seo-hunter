@@ -36,7 +36,7 @@ exports.getArticle = (id) => {
 
 exports.getAsset = (assetUri) => {
   return new Promise(function (resolve, reject) {
-    console.log("Ares: " + "Calling Ares API - CPS");
+    console.log(`Calling Ares API (CPS) for asset ${assetUri}`);
     const opts = {
       cert: `${certFile}`,
       key: `${keyFile}`,
@@ -59,6 +59,7 @@ exports.getAsset = (assetUri) => {
         resolve("202");
       } else {
         resolve(body);
+        console.log(`Data for asset ${assetUri} has been extracted.`);
       }
     });
   });

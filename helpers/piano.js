@@ -1,4 +1,5 @@
 const fetch = require("cross-fetch");
+const serviceFix = require("./serviceFix");
 require("dotenv").config();
 
 const username = process.env["PIANO_USERNAME"];
@@ -32,14 +33,184 @@ exports.findArticles = async (service) => {
             },
             {
               url: {
-                $neq: `https://www.bbc.com/${service.toLowerCase()}`,
+                $neq: `https://www.bbc.com/${serviceFix
+                  .serviceFix(service)
+                  .toLowerCase()}`,
               },
             },
+
             {
               url: {
-                $nlk: `https://www.bbc.com/${service.toLowerCase()}/live/`,
+                $neq: `https://www.bbc.com/${serviceFix
+                  .serviceFix(service)
+                  .toLowerCase()}.amp`,
               },
             },
+
+            {
+              url: {
+                $neq: `https://www.bbc.com/zhongwen/simp`,
+              },
+            },
+
+            {
+              url: {
+                $neq: `https://www.bbc.com/zhongwen/simp.amp`,
+              },
+            },
+
+            {
+              url: {
+                $neq: `https://www.bbc.com/zhongwen/trad`,
+              },
+            },
+
+            {
+              url: {
+                $neq: `https://www.bbc.com/zhongwen/trad.amp`,
+              },
+            },
+
+            {
+              url: {
+                $neq: `https://www.bbc.com/serbian/lat`,
+              },
+            },
+
+            {
+              url: {
+                $neq: `https://www.bbc.com/serbian/lat.amp`,
+              },
+            },
+
+            {
+              url: {
+                $neq: `https://www.bbc.com/serbian/cyr`,
+              },
+            },
+
+            {
+              url: {
+                $neq: `https://www.bbc.com/serbian/cyr.amp`,
+              },
+            },
+
+            {
+              url: {
+                $neq: `https://www.bbc.com/uzbek.amp`,
+              },
+            },
+
+            {
+              url: {
+                $neq: `https://www.bbc.com/uzbek`,
+              },
+            },
+
+            {
+              url: {
+                $empty: false,
+              },
+            },
+
+            {
+              url: {
+                $nlk: `https://www.bbc.com/${serviceFix
+                  .serviceFix(service)
+                  .toLowerCase()}/live/`,
+              },
+            },
+
+            {
+              url: {
+                $nlk: `https://www.bbc.com/${serviceFix
+                  .serviceFix(service)
+                  .toLowerCase()}?ocid`,
+              },
+            },
+
+            {
+              url: {
+                $nlk: `https://www.bbc.com/${serviceFix
+                  .serviceFix(service)
+                  .toLowerCase()}?fbclid`,
+              },
+            },
+
+            {
+              url: {
+                $nlk: `https://www.bbc.com/${serviceFix
+                  .serviceFix(service)
+                  .toLowerCase()}/popular`,
+              },
+            },
+
+            {
+              url: {
+                $nlk: `topics`,
+              },
+            },
+
+            {
+              url: {
+                $nlk: `programmes`,
+              },
+            },
+
+            {
+              url: {
+                $nlk: `extra`,
+              },
+            },
+
+            {
+              url: {
+                $nlk: `_radio`,
+              },
+            },
+
+            {
+              url: {
+                $nlk: `podcasts`,
+              },
+            },
+
+            {
+              url: {
+                $nlk: `_tv`,
+              },
+            },
+
+            {
+              url: {
+                $nlk: `tv_programmes`,
+              },
+            },
+
+            {
+              url: {
+                $nlk: `fastly`,
+              },
+            },
+
+            {
+              url: {
+                $nlk: `resources`,
+              },
+            },
+
+            {
+              url: {
+                $nlk: `extra`,
+              },
+            },
+
+            {
+              url: {
+                $nlk: `?xtor`,
+              },
+            },
+
             {
               pub_update_date: {
                 $lk: `${new Date().toISOString().substring(0, 7)}`,

@@ -8,7 +8,7 @@ const init = async () => {
   for (const serviceName of data.serviceNames) {
     const payload = await piano.findArticles(serviceName);
 
-    for (const article of payload.DataFeed.Rows.slice(0, 6)) {
+    for (const article of payload.DataFeed.Rows) {
       if (article.url.includes("articles")) {
         // const articleJson = await ares.getArticle(article.url.slice(-12));
         const articleJson = await ares.getArticle(
@@ -31,8 +31,10 @@ const init = async () => {
         );
 
         //enrich CPS article with ARES data
-        article.seoHeadline = articleJson.promo.headlines.headline;
-        article.headline = articleJson.promo.headlines.shortHeadline;
+        article.headline =
+          articleJson?.promo?.headlines?.shortHeadline ?? "Not available";
+        article.seoHeadline =
+          articleJson?.promo?.headlines?.headline ?? "Not available";
 
         if (article.seoHeadline == article.headline) {
           article.seoOptimised = false;
@@ -42,7 +44,7 @@ const init = async () => {
       }
     }
 
-    const dataToUpload = payload.DataFeed.Rows.slice(0, 6).map((item) =>
+    const dataToUpload = payload.DataFeed.Rows.map((item) =>
       Object.values(item)
     );
 
