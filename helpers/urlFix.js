@@ -19,6 +19,6 @@ exports.urlResolver = (url) => {
 
   //const regexElse = /\/[a-z]+\/[a-z]*[-]?[\d]{8}/gm;
   //const regexElse = /\/[a-z]+\/\S*[-]?[\d]{8}/gm;
-  const regexElse = /(?<=\.com)\S+-\d{8}/gm;
+  const regexElse = /(?<=\.com)\S+\d{8}/gm;
   return url.match(regexElse)[0];
 };

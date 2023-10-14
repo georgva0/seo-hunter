@@ -1,6 +1,6 @@
 const piano = require("./helpers/piano");
 
-piano.findArticles("Uzbek").then((data) => console.log(data.DataFeed.Rows));
+piano.findArticles("Pashto").then((data) => console.log(data.DataFeed.Rows));
 
 // console.log(serviceFix.serviceFix("Mundo"));
 

@@ -103,6 +103,12 @@ exports.findArticles = async (service) => {
 
             {
               url: {
+                $neq: `https://www.bbc.com/uzbek#`,
+              },
+            },
+
+            {
+              url: {
                 $neq: `https://www.bbc.com/uzbek`,
               },
             },
@@ -133,14 +139,6 @@ exports.findArticles = async (service) => {
               url: {
                 $nlk: `https://www.bbc.com/${serviceFix
                   .serviceFix(service)
-                  .toLowerCase()}?fbclid`,
-              },
-            },
-
-            {
-              url: {
-                $nlk: `https://www.bbc.com/${serviceFix
-                  .serviceFix(service)
                   .toLowerCase()}/popular`,
               },
             },
@@ -151,6 +149,16 @@ exports.findArticles = async (service) => {
               },
             },
 
+            {
+              url: {
+                $nlk: `?fbclid`,
+              },
+            },
+            {
+              url: {
+                $nlk: `translate`,
+              },
+            },
             {
               url: {
                 $nlk: `programmes`,
