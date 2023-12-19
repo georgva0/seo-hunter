@@ -8,7 +8,7 @@ const certPass = process.env["CERT_PW"];
 
 exports.getArticle = (id) => {
   return new Promise(function (resolve, reject) {
-    console.log("Ares: " + "Calling Ares API - Optimo");
+    console.log(`Ares: Calling Ares API - Optimo for ${id}`);
     const opts = {
       cert: `${certFile}`,
       key: `${keyFile}`,
@@ -24,10 +24,12 @@ exports.getArticle = (id) => {
     request(opts, (err, res, body) => {
       if (err) {
         console.log("Ares: " + err);
-      } else if (body === undefined || body === null) {
+      } if (body === undefined || body === null) {
         console.log("Ares: " + body);
         resolve("404");
-      } else {
+      }
+   
+      else {
         resolve(body);
       }
     });

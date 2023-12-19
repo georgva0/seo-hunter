@@ -2,10 +2,11 @@ const piano = require("./helpers/piano");
 const ares = require("./helpers/ares");
 const urlFix = require("./helpers/urlFix");
 const google = require("./helpers/googleSheetsService");
+const addLog = require("./helpers/addLog");
 const data = require("./data.json");
 
 const init = async () => {
-  for (const serviceName of data.serviceNames) {
+  for (const serviceName of data.serviceNames_final) {
     const payload = await piano.findArticles(serviceName);
 
     for (const article of payload.DataFeed.Rows) {
@@ -16,9 +17,9 @@ const init = async () => {
         );
 
         //enrich Optimo article with ARES data
-        article.seoHeadline = articleJson.promo.headlines.seoHeadline;
+        article.seoHeadline = articleJson?.promo?.headlines?.seoHeadline ?? "Not available";
         article.headline =
-          articleJson.promo.headlines.promoHeadline.blocks[0].model.blocks[0].model.text;
+          articleJson?.promo?.headlines?.promoHeadline?.blocks[0]?.model?.blocks[0]?.model?.text ?? "Not available" ;
         if (article.seoHeadline == article.headline) {
           article.seoOptimised = false;
         } else {
@@ -50,6 +51,7 @@ const init = async () => {
 
     await google.handleSpreadsheetData(serviceName, dataToUpload);
   }
+  addLog.addNewLine();
 };
 
 init();

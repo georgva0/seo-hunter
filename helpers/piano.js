@@ -5,6 +5,8 @@ require("dotenv").config();
 const username = process.env["PIANO_USERNAME"];
 const password = process.env["PIANO_PASSWORD"];
 
+//function to access Piano analytics
+
 exports.findArticles = async (service) => {
   const response = await fetch("https://api.atinternet.io/v3/data/getData", {
     method: "POST",
@@ -131,7 +133,7 @@ exports.findArticles = async (service) => {
               url: {
                 $nlk: `https://www.bbc.com/${serviceFix
                   .serviceFix(service)
-                  .toLowerCase()}?ocid`,
+                  .toLowerCase()}?`,
               },
             },
 
@@ -218,7 +220,52 @@ exports.findArticles = async (service) => {
                 $nlk: `?xtor`,
               },
             },
+            {
+              url: {
+                $nlk: `52140979`,
+              },
+            },
+            {
+              url: {
+                $nlk: `c518yx1ex48o`,
+              },
+            },
+            {
+              url: {
+                $nlk: `persian/afghanistan`,
+              },
+            },
+            {
+              url: {
+                $nlk: `hausa#`,
+              },
+            },
+            {
+              url: {
+                $nlk: `uzbek#`,
+              },
+            },
+            {
+              url: {
+                $nlk: `arabic/media-54706728`,
+              },
+            },
 
+            {
+              url: {
+                $nlk: `hausa?`,
+              },
+            },
+            {
+              url: {
+                $nlk: `54712348`,
+              },
+            },
+            {
+              url: {
+                $nlk: `cyj2djmj7elo`,
+              },
+            },
             {
               pub_update_date: {
                 $lk: `${new Date().toISOString().substring(0, 7)}`,
