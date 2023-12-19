@@ -54,6 +54,6 @@ const init = async () => {
   addLog.addNewLine();
 };
 
-//run process 
+//start run process
 
 init();
